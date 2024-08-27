@@ -90,6 +90,7 @@ struct DynamicIslandView: View {
                 
                 
             }
+            .frame(height: 500)
             .padding()
             .background(.ultraThinMaterial)
             .cornerRadius(25)

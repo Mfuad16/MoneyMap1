@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Binding var isOn: Bool
+    
+    @State var toggleDarkMode: Bool = false
+    
     var body: some View {
         NavigationStack {
             List(){
@@ -20,19 +22,19 @@ struct SettingsView: View {
                         Text("Profile")
                     }
                 }
-                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
+//                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
                 
                 HStack {
                     Image(systemName: "circle.lefthalf.filled")
-                        .symbolEffect(.rotate, value: isOn)
-                    Toggle(isOn: $isOn) {
+                        .symbolEffect(.rotate)
+                    Toggle(isOn: $toggleDarkMode) {
                         Text("Dark Mode")
                     }
                 }
-                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
+//                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
                 
                 NavigationLink {
-                    DarkMode(isOn: $isOn)
+                    Text("Navigation")
                         .padding()
                 } label: {
                     HStack {
@@ -40,7 +42,7 @@ struct SettingsView: View {
                         Text("Search")
                     }
                 }
-                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
+//                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
                 
                 NavigationLink {
                     Text("view")
@@ -50,7 +52,7 @@ struct SettingsView: View {
                         Text("Profile")
                     }
                 }
-                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
+//                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
                 NavigationLink {
                     Text("view")
                 } label: {
@@ -59,35 +61,22 @@ struct SettingsView: View {
                         Text("Settings")
                     }
                 }
-                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
+//                .listRowBackground(isOn ? Color.black.opacity(1) : Color.white)
 
             }
            
-            .foregroundColor(isOn ? .white : .black)
+            
             .scrollContentBackground(.hidden)
-//            .background(isOn ? .gray : .b)
-            .background(isOn ? .black : .white)
+            .background( Color("BgColor").ignoresSafeArea())
+            
         }
     }
 }
 
-struct DarkMode: View {
-    @Binding var isOn: Bool
-    var body: some View {
-        ZStack {
-           
-            Toggle(isOn: $isOn) {
-                Text("Dark Mode")
-            }
-        }
-        
-        
-    }
-       
-}
+
 
 
 
 #Preview {
-    SettingsView(isOn: .constant(false))
+    SettingsView()
 }

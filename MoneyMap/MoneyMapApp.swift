@@ -13,7 +13,7 @@ struct MoneyMapApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            TabbarView(vm: ViewModel())
         }
     }
 }
